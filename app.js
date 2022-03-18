@@ -13,6 +13,7 @@ app.use(logger('dev'));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
+// eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
