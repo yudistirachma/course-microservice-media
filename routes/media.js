@@ -82,7 +82,6 @@ router.delete('/:id', async(req, res) => {
     where: { id }
   })
 
-  console.log(media)
   if (!media) {
     return res.status(400).json({ status: false, message: 'media not found' })
   }

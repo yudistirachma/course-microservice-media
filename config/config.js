@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+// eslint-disable-next-line no-undef
 const { DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOSTNAME } = process.env
 
 module.exports = {
