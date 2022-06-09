@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 const isBase64 = require('is-base64')
 const base64Img = require('base64-img')
 const fs = require('fs')
 
 const { Media } = require('../models')
+const { HOSTNAME } = process.env
 
 const index = async (req, res) => {
   const media = await Media.findAll({
@@ -10,7 +12,7 @@ const index = async (req, res) => {
   })
 
   const urlMedia = media.map(m => {
-    m.image = `http://${req.get('host')}/${m.image}`
+    m.image = `http://${HOSTNAME}/${m.image}`
     return m
   })
 
@@ -54,8 +56,6 @@ const store = async (req, res) => {
     if (err) {
       return res.status(400).json({ status: false, message: err.message })
     }
-
-    console.log(filePath)
 
     const fileName = filePath.split('\\').pop().split('/').pop()
     
